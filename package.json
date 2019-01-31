@@ -1,0 +1,30 @@
+{
+  "name": "crm-sistem",
+  "version": "1.0.0",
+  "description": "fullsatck app with angular and express, mongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "server": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/asuchoj/crm-sistem.git"
+  },
+  "keywords": [
+    "express",
+    "angular"
+  ],
+  "author": "asuchoj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asuchoj/crm-sistem/issues"
+  },
+  "homepage": "https://github.com/asuchoj/crm-sistem#readme",
+  "dependencies": {
+    "exposejs": "0.0.1",
+    "express": "^4.16.4",
+    "protozaur": "^1.1.0",
+    "typescript": "^3.2.4"
+  }
+}
