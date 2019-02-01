@@ -1,4 +1,6 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('passport');
 const cors = require('cors');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -8,6 +10,14 @@ const categoryRoutes = require('./routes/category');
 const orderRoutes = require('./routes/order');
 const positionRoutes = require('./routes/position');
 const app = express();
+const keys = require('./config/keys');
+
+mongoose.connect(keys.mongoUPI,{useNewUrlParser: true})
+  .then(() => console.log('MongoDB'))
+  .catch(error => console.log(error));
+
+app.use(passport.initialize());
+require('./middleware/passport')(passport);
 
 app.use(morgan('dev'));
 app.use(cors());

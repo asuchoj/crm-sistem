@@ -22,13 +22,17 @@
   },
   "homepage": "https://github.com/asuchoj/crm-sistem#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
     "exposefs": "0.0.2",
     "exposejs": "0.0.1",
     "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.4.8",
     "morgan": "^1.9.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "protozaur": "^1.1.0",
     "typescript": "^3.2.4"
   },
