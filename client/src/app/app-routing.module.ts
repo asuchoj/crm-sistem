@@ -21,9 +21,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: '', component: SiteLayoutComponent, children: [
-
-    ]
+    path: '', component: SiteLayoutComponent, children: []
   },
 ];
 
