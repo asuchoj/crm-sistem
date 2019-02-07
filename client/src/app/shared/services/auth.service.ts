@@ -35,11 +35,13 @@ export class AuthService {
   login(user: User): Observable<{token: string}>{
     return this.http.post<{token: string}>("/api/auth/login", user).pipe(
       tap(({token}) => {
-        localStorage.setItem('token', token);
+        localStorage.setItem("token", token);
         this.setToken(token);
       })
     )
   }
 
-  register(){}
+  register(user: User): Observable<User>{
+    return this.http.post<User>("/api/auth/register", user)
+  }
 }

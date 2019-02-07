@@ -17,12 +17,12 @@ const routes: Routes = [
       },
       {
         path: 'registration', component: RegisterPageComponent
-      }
+      },
+      {
+        path: 'overview', component: SiteLayoutComponent, children: []
+      },
     ]
-  },
-  {
-    path: '', component: SiteLayoutComponent, children: []
-  },
+  }
 ];
 
 @NgModule({
