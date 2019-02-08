@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {CategoriesService} from "../../shared/services/categories.service";
+import {switchMap} from "rxjs/operators";
+import {of} from "rxjs";
+import {MaterialService} from "../../shared/classes/material.service";
 
 @Component({
   selector: 'app-categories-form',
@@ -10,17 +15,42 @@ export class CategoriesFormComponent implements OnInit {
 
   isNew = true;
 
-  constructor(private route: ActivatedRoute) { }
+  form: FormGroup;
+
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private categoriesService: CategoriesService
+  ){}
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      if(params['id']){
-        //Мы редактируем форму
-        this.isNew = false;
-      } else {
+    this.form = this.fb.group({
+      name: [null, [Validators.required]]
+    });
 
+    this.form.disable();
+
+    this.route.params.pipe(
+      switchMap((params: Params) => {
+        if(params['id']) {
+          this.isNew = false;
+          return this.categoriesService.getById(params['id'])
+        }
+
+        return of(null)
+      })
+    ).subscribe(category => {
+      if(category) {
+        this.form.patchValue({name: category.name});
+
+        MaterialService.updateTextInputs();
       }
-    })
+
+      this.form.enable();
+    }, err => MaterialService.toast(err.error.message))
   }
 
+  onSubmit(){
+    console.log(this.form.value.name)
+  }
 }
