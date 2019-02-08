@@ -4,3 +4,18 @@
   width: 400px;
   margin: 150px auto 0;
 }
+
+.page-title,
+.page-subtitle{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.collection-item-icon {
+  display: flex!important;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
